@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Shymon's ToDo </title>
+</head>
+<body>
+    <script>
+        let gid = 1; 
+        function markAsDone(mid){
+            const parent = document.getElementById(mid)
+            parent.innerHTML = "Done"
+        }
+        function createChild(Title,Description,id){
+            const child = document.createElement("div")
+            const innerChild1 = document.createElement("div")
+            innerChild1.innerHTML = Title
+            const innerChild2 = document.createElement("div")
+            innerChild2.innerHTML = Description
+            const innerChild3 = document.createElement("button")
+            innerChild3.innerHTML = "Mark as Done"
+            innerChild3.setAttribute("onclick", `markAsDone(${id})`);
+            innerChild3.setAttribute("id",id)
+            child.appendChild(innerChild1)
+            child.appendChild(innerChild2)
+            child.appendChild(innerChild3)
+            return child;
+        } 
+        function todo(){
+            const Title = document.getElementById("Title").value
+            const Description = document.getElementById("Description").value
+            const Parent = document.getElementById("parent")
+            Parent.appendChild(createChild(Title,Description,gid++))
+        }  
+
+    </script>
+    <div id = "sty" style="background-color: aqua;height: 25px;
+    width: 67px;border: 2px solid red ;">TODoOoo</div><br>
+    <br>
+    <input type = "text" placeholder="Title" id="Title"><br><br>
+    <input type = "text" placeholder="Description" id="Description"><br><br>
+    <button onclick = "todo()">Add</button>
+    <br><br>
+    <div id = "parent"></div>
+    
+</body>
+</html>
